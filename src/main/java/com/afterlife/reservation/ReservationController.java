@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class ReservationController {
     @GetMapping("/home")
     public String Home(){
-        return "This is reservation service for afterlife";
+        return "This is reservation service for afterlife!";
     }
 }
