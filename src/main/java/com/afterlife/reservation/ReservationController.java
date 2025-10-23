@@ -10,4 +10,5 @@ public class ReservationController {
     public String Home(){
         return "This is reservation service for afterlife!";
     }
+
 }
