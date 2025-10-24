@@ -1,0 +1,45 @@
+package com.afterlife.reservation.Services;
+
+import com.afterlife.reservation.Entities.UserEntity;
+import com.afterlife.reservation.Repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Objects;
+
+@Service
+public class UserServiceImpl implements UserService{
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Override
+    public UserEntity saveUser(UserEntity user){
+        return userRepository.save(user);
+    }
+
+    @Override
+    public List<UserEntity> fetchUserList(){
+        return (List<UserEntity>) userRepository.findAll();
+    }
+    @Override
+    public UserEntity updateUser(UserEntity user, Long userId){
+        UserEntity userDB = userRepository.findById(userId).get();
+        //name
+        if(Objects.nonNull(user.getUsername()) && !"".equalsIgnoreCase(user.getUsername())){
+            userDB.setUsername(user.getUsername());
+        }
+        //email
+        if(Objects.nonNull(user.getEmail()) && !"".equalsIgnoreCase(user.getEmail())){
+            userDB.setEmail(user.getEmail());
+        }
+
+        return userRepository.save(userDB);
+    }
+    @Override
+    public void deleteUserById(Long userId){
+        userRepository.deleteById(userId);
+    }
+
+}
