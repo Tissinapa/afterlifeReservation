@@ -5,6 +5,7 @@ import com.afterlife.reservation.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,6 +17,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public UserEntity saveUser(UserEntity user){
+        user.setCreatedAt(LocalDateTime.now());
         return userRepository.save(user);
     }
 
