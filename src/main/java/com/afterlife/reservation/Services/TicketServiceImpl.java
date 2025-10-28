@@ -2,9 +2,11 @@ package com.afterlife.reservation.Services;
 
 import com.afterlife.reservation.Entities.TicketEntity;
 import com.afterlife.reservation.Repositories.TicketRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TicketServiceImpl implements TicketService{
 
     private TicketRepository ticketRepository;
