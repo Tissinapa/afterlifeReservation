@@ -23,7 +23,53 @@ public class SeatEntity {
     private List<TicketEntity> tickets;
 
 
+    public SeatEntity(){}
 
+    public SeatEntity(Long seatId, RealmType realm, String section, String seatNumber, boolean isReserved){
+        this.seatId = seatId;
+        this.realm = realm;
+        this.section = section;
+        this.seatNumber = seatNumber;
+        this.isReserved = isReserved;
+    }
+    public Long getSeatId() {
+        return seatId;
+    }
 
+    public void setSeatId(Long seatId) {
+        this.seatId = seatId;
+    }
+
+    public RealmType getRealm() {
+        return realm;
+    }
+
+    public void setRealm(RealmType realm) {
+        this.realm = realm;
+    }
+
+    public String getSection() {
+        return section;
+    }
+
+    public void setSection(String section) {
+        this.section = section;
+    }
+
+    public String getSeatNumber() {
+        return seatNumber;
+    }
+
+    public void setSeatNumber(String seatNumber) {
+        this.seatNumber = seatNumber;
+    }
+
+    public boolean isReserved() {
+        return isReserved;
+    }
+
+    public void setReserved(boolean reserved) {
+        isReserved = reserved;
+    }
 
 }

@@ -1,6 +1,7 @@
 package com.afterlife.reservation.Services;
 
 import com.afterlife.reservation.Entities.UserEntity;
+import com.afterlife.reservation.Repositories.SeatRepository;
 import com.afterlife.reservation.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,8 +13,13 @@ import java.util.Objects;
 @Service
 public class UserServiceImpl implements UserService{
 
+
+    private final UserRepository userRepository;
+
     @Autowired
-    private UserRepository userRepository;
+    public UserServiceImpl(UserRepository userRepository){
+        this.userRepository = userRepository;
+    }
 
     @Override
     public UserEntity saveUser(UserEntity user){

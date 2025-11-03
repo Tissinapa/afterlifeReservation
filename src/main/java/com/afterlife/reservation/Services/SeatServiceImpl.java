@@ -2,6 +2,7 @@ package com.afterlife.reservation.Services;
 
 import com.afterlife.reservation.Entities.SeatEntity;
 import com.afterlife.reservation.Repositories.SeatRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,7 +11,12 @@ import java.util.List;
 public class SeatServiceImpl implements SeatService{
 
 
-    private SeatRepository seatRepository;
+    private final SeatRepository seatRepository;
+
+    @Autowired
+    public SeatServiceImpl(SeatRepository seatRepository){
+        this.seatRepository = seatRepository;
+    }
 
     @Override
     public SeatEntity reserveSeat(SeatEntity seat){
