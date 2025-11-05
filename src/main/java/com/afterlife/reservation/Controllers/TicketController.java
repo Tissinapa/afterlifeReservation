@@ -17,7 +17,6 @@ public class TicketController {
     @Autowired
     private TicketService ticketService;
 
-
     //buy ticket
     @PostMapping("/buy")
     public TicketEntity buyTicket(@Valid @RequestBody TicketEntity ticket){
