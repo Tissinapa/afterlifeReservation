@@ -18,7 +18,13 @@ public class SeatController {
 
     //Post seat
     @PostMapping("/select")
-    public SeatEntity reserveSeat(@Valid @RequestBody SeatEntity seat) {return seatService.reserveSeat(seat); }
+    public SeatEntity reserveSeat(@Valid @RequestBody SeatEntity seat) {
+
+
+        return seatService.reserveSeat(seat);
+
+
+    }
 
     @GetMapping("/all")
     public List<SeatEntity> fetchSeats() { return seatService.fetchSeats();}
