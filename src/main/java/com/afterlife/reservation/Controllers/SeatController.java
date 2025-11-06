@@ -20,9 +20,7 @@ public class SeatController {
     @PostMapping("/select")
     public SeatEntity reserveSeat(@Valid @RequestBody SeatEntity seat) {
 
-
         return seatService.reserveSeat(seat);
-
 
     }
 
