@@ -21,13 +21,15 @@ public class SeatServiceImpl implements SeatService{
     @Override
     public SeatEntity reserveSeat(SeatEntity seat){
 
-        if(seatRepository.findByRealmAndSectionAndSeatNumber(
+        boolean seatIsAvailable = seatRepository.findByRealmAndSectionAndSeatNumber(
                 seat.getRealm(),
                 seat.getSection(),
                 seat.getSeatNumber()
-        ).isPresent()){
+        ).isPresent();
+        if (seatIsAvailable){
             throw new IllegalStateException("Seat is already taken!");
         }
+
 
 
         return seatRepository.save(seat);
