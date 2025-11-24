@@ -20,8 +20,8 @@ public class ReportController {
     @GetMapping("/all")
     public List<ReportEntity> getReport() {return reportService.getReport();}
 
-    @GetMapping("/byrealms")
-    public List<ReportEntity> getRealmReport(@RequestParam String realm) {
+    @GetMapping("/byrealms/{realm}")
+    public List<ReportEntity> getRealmReport(@PathVariable String realm) {
 
         RealmType realmType = RealmType.valueOf(realm.toUpperCase());
         return reportService.getRealmReport(realmType);
