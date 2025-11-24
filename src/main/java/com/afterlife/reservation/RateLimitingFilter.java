@@ -30,7 +30,7 @@ public class RateLimitingFilter extends OncePerRequestFilter {
 
         if(requestCount >= MAX_REQUEST_PER_MINUTE){
             response.setStatus(HttpStatus.TOO_MANY_REQUESTS.value());
-            response.getWriter().write("Too many request- please try again later. ");
+            response.getWriter().write("Too many request - please try again later. ");
             return;
 
         }
