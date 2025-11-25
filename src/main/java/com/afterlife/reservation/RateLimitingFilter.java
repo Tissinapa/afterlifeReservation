@@ -1,44 +1,40 @@
 package com.afterlife.reservation;
 
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
+
+import io.github.bucket4j.Bucket;
+import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.http.HttpStatus;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-import java.rmi.server.ServerCloneException;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 @Component
-public class RateLimitingFilter extends OncePerRequestFilter {
+public class RateLimitingFilter implements Filter {
 
-    private final Map<String, Integer> requestCounts = new ConcurrentHashMap<>();
 
-    // maximum allowed request per minute
-    private static final int MAX_REQUEST_PER_MINUTE = 6;
+    private final Bucket bucket;
 
+    @Autowired
+    public RateLimitingFilter(Bucket bucket){
+        this.bucket = bucket;
+    }
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException{
-
-        String clientIp = request.getRemoteAddr();
-        requestCounts.putIfAbsent(clientIp, 0 );
-        int requestCount = requestCounts.get(clientIp);
-
-        if(requestCount >= MAX_REQUEST_PER_MINUTE){
-            response.setStatus(HttpStatus.TOO_MANY_REQUESTS.value());
-            response.getWriter().write("Too many request - please try again later. ");
-            return;
-
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException{
+        if(bucket.tryConsume(1)){
+            chain.doFilter(request,response);
+        }else {
+            ((HttpServletResponse) response).setStatus(429); // too many requests
         }
-        requestCounts.put(clientIp, requestCount + 1);
-        filterChain.doFilter(request, response);
-
-
     }
 
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException{
+
+    }
+    @Override
+    public void destroy(){
+
+    }
 
 }
