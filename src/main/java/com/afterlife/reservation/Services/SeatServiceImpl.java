@@ -23,7 +23,7 @@ public class SeatServiceImpl implements SeatService{
         String seatNumber = seat.getSeatNumber();
         int numSeat = Integer.parseInt(seatNumber);// this is so stupid but im to lazy to modify seat entity and db :D lol
 
-        if(numSeat < 1 || numSeat >30){
+        if(numSeat < 1 || numSeat >30 ){
             throw new IllegalArgumentException("Seat number must be between 1 and 30");
         }
 
