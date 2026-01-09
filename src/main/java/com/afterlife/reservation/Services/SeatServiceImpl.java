@@ -21,7 +21,8 @@ public class SeatServiceImpl implements SeatService{
     @Override
     public SeatEntity reserveSeat(SeatEntity seat){
         String seatNumber = seat.getSeatNumber();
-        int numSeat = Integer.parseInt(seatNumber);// this is so stupid but im to lazy to modify seat entity and db :D lol
+        int numSeat = Integer.parseInt(seatNumber);// this is so stupid, but why the F I didn't make seat as int in db?????
+                                                   // Well i guess this is good lesson to learn to think harder.
 
         if(numSeat < 1 || numSeat >30 ){
             throw new IllegalArgumentException("Seat number must be between 1 and 30");
