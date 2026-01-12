@@ -21,7 +21,7 @@ public class SeatServiceImpl implements SeatService{
     @Override
     public SeatEntity reserveSeat(SeatEntity seat){
         String seatNumber = seat.getSeatNumber();
-        String seatSection = seat.getSection();
+
         int numSeat = Integer.parseInt(seatNumber);// this is so stupid, but why the F I didn't make seat as int in db?????
                                                    // Well i guess this is good lesson to learn to think harder.
 
