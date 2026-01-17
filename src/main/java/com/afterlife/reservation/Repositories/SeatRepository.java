@@ -12,5 +12,5 @@ public interface SeatRepository extends JpaRepository<SeatEntity , Long> {
     Optional<SeatEntity> findByRealmAndSectionAndSeatNumber(
             RealmType realmType,
             String section,
-            String seatNumber);
+            Integer seatNumber);
 }

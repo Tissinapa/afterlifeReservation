@@ -22,7 +22,7 @@ public class SeatEntity {
     private String section;
     //@Min(value = 1, message= "Seat number must be 1 or higher")
     //@Max(value = 30, message= "Seat number must be 30 or lower")
-    private String seatNumber;
+    private Integer seatNumber;
     private boolean isReserved;
 
     @OneToMany(mappedBy = "seat")
@@ -31,7 +31,7 @@ public class SeatEntity {
 
     public SeatEntity(){}
 
-    public SeatEntity(Long seatId, RealmType realm, String section, String seatNumber, boolean isReserved){
+    public SeatEntity(Long seatId, RealmType realm, String section, Integer seatNumber, boolean isReserved){
         this.seatId = seatId;
         this.realm = realm;
         this.section = section;
@@ -62,11 +62,11 @@ public class SeatEntity {
         this.section = section;
     }
 
-    public String getSeatNumber() {
+    public Integer getSeatNumber() {
         return seatNumber;
     }
 
-    public void setSeatNumber(String seatNumber) {
+    public void setSeatNumber(Integer seatNumber) {
         this.seatNumber = seatNumber;
     }
 
