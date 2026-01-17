@@ -49,7 +49,7 @@ public class SeatServiceImpl implements SeatService{
     }
 
     @Override
-    public void deleteSeat(Long seatId){
+    public void deleteSeatById(Long seatId){
         seatRepository.deleteById(seatId);
     }
 

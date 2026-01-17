@@ -7,5 +7,5 @@ import java.util.List;
 public interface SeatService {
     SeatEntity reserveSeat(SeatEntity seatEntity);
     List<SeatEntity> fetchSeats();
-    void deleteSeat(Long seatId);
+    void deleteSeatById(Long seatId);
 }
