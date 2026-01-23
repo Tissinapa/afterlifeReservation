@@ -1,6 +1,7 @@
 package com.afterlife.reservation;
 
 import com.afterlife.reservation.Entities.RealmType;
+import com.afterlife.reservation.Entities.SeatClass;
 import com.afterlife.reservation.Entities.SeatEntity;
 import com.afterlife.reservation.Repositories.SeatRepository;
 import com.afterlife.reservation.Services.SeatServiceImpl;
@@ -28,7 +29,7 @@ public class SeatServiceTests {
 
     @Test
     void ShouldReturnRealmWhenIdExists(){
-        SeatEntity seat = new SeatEntity(1L, RealmType.HELL,"A",1,false);
+        SeatEntity seat = new SeatEntity(1L, RealmType.HELL, SeatClass.A,1,false);
         when(seatRepository.save(any(SeatEntity.class))).thenReturn(seat);
 
         SeatEntity savedSeat = seatService.reserveSeat(seat);
@@ -40,19 +41,19 @@ public class SeatServiceTests {
     }
     @Test
     void ShouldReturnSectionWhenIdExists(){
-        SeatEntity seat = new SeatEntity(1L, RealmType.HELL,"A",1,false);
+        SeatEntity seat = new SeatEntity(1L, RealmType.HELL,SeatClass.A,1,false);
         when(seatRepository.save(any(SeatEntity.class))).thenReturn(seat);
 
         SeatEntity savedSeat = seatService.reserveSeat(seat);
 
         assertNotNull(savedSeat);
-        assertEquals("A",savedSeat.getSection());
+        assertEquals(SeatClass.A,savedSeat.getSection());
         verify(seatRepository,times(1)).save(seat);
 
     }
     @Test
     void ShouldReturnSeatWhenIdExists(){
-        SeatEntity seat = new SeatEntity(1L, RealmType.HELL,"A",1,false);
+        SeatEntity seat = new SeatEntity(1L, RealmType.HELL,SeatClass.A,1,false);
         when(seatRepository.save(any(SeatEntity.class))).thenReturn(seat);
 
         SeatEntity savedSeat = seatService.reserveSeat(seat);
@@ -64,8 +65,8 @@ public class SeatServiceTests {
     }
     @Test
     void ShouldFetchAllWhenExists(){
-        SeatEntity seat1 = new SeatEntity(1L,RealmType.HELL,"B",2,false);
-        SeatEntity seat2 = new SeatEntity(2L,RealmType.HEAVEN,"C",3,false);
+        SeatEntity seat1 = new SeatEntity(1L,RealmType.HELL,SeatClass.B,2,false);
+        SeatEntity seat2 = new SeatEntity(2L,RealmType.HEAVEN,SeatClass.C,3,false);
 
         when(seatRepository.findAll()).thenReturn(List.of(seat1,seat2));
 

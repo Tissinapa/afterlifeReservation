@@ -18,8 +18,9 @@ public class SeatEntity {
 
     @Enumerated(EnumType.STRING)
     private RealmType realm;
-    @Pattern(regexp = "^[ABC]$", message = "Section must be A,B or C")
-    private String section;
+
+    @Enumerated(EnumType.STRING)
+    private SeatClass section;
     //@Min(value = 1, message= "Seat number must be 1 or higher")
     //@Max(value = 30, message= "Seat number must be 30 or lower")
     private Integer seatNumber;
@@ -31,7 +32,7 @@ public class SeatEntity {
 
     public SeatEntity(){}
 
-    public SeatEntity(Long seatId, RealmType realm, String section, Integer seatNumber, boolean isReserved){
+    public SeatEntity(Long seatId, RealmType realm, SeatClass section, Integer seatNumber, boolean isReserved){
         this.seatId = seatId;
         this.realm = realm;
         this.section = section;
@@ -54,11 +55,11 @@ public class SeatEntity {
         this.realm = realm;
     }
 
-    public String getSection() {
+    public SeatClass getSection() {
         return section;
     }
 
-    public void setSection(String section) {
+    public void setSection(SeatClass section) {
         this.section = section;
     }
 
