@@ -1,15 +1,17 @@
 package com.afterlife.reservation.Services;
 
+import com.afterlife.reservation.DataTransferObjects.TicketRequest;
+import com.afterlife.reservation.DataTransferObjects.TicketResponse;
 import com.afterlife.reservation.Entities.TicketEntity;
 
 import java.util.List;
 
 public interface TicketService {
-    TicketEntity buyTicket(TicketEntity ticketEntity);
+    //TicketEntity buyTicket(TicketEntity ticketEntity);
     TicketEntity buyTicketForOther(TicketEntity ticketEntity);
     List<TicketEntity> fetchTickets();
     void deleteTicket(Long ticketId);
-
+    TicketResponse buyTicket(TicketRequest request);
 
 
 

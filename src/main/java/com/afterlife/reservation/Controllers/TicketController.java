@@ -1,6 +1,8 @@
 package com.afterlife.reservation.Controllers;
 
 
+import com.afterlife.reservation.DataTransferObjects.TicketRequest;
+import com.afterlife.reservation.DataTransferObjects.TicketResponse;
 import com.afterlife.reservation.Entities.TicketEntity;
 import com.afterlife.reservation.Services.TicketService;
 import jakarta.validation.Valid;
@@ -15,12 +17,16 @@ public class TicketController {
 
 
     @Autowired
-    private TicketService ticketService;
+    private final TicketService ticketService;
+
+    public TicketController(TicketService ticketService) {
+        this.ticketService = ticketService;
+    }
 
     //buy ticket
     @PostMapping("/buy")
-    public TicketEntity buyTicket(@Valid @RequestBody TicketEntity ticket){
-        return ticketService.buyTicket(ticket);
+    public TicketResponse buyTicket(@Valid @RequestBody TicketRequest request) {
+        return ticketService.buyTicket(request);
     }
 
 
