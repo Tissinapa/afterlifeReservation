@@ -15,6 +15,9 @@ public class PriceResponse {
     public BigDecimal getPrice() {
         return price;
     }
+    public String getCurrency() {     // ← ADD THIS
+        return currency;
+    }
 
     public void setCurrency(String currency) {
         this.currency = currency;

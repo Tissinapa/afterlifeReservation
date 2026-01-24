@@ -4,10 +4,7 @@ import com.afterlife.reservation.DataTransferObjects.PriceRequests;
 import com.afterlife.reservation.DataTransferObjects.PriceResponse;
 import com.afterlife.reservation.Services.PriceService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/prices")
